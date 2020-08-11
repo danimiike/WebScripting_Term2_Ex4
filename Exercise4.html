@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>Page Title Here</title>
+		<script language="JavaScript" type="text/JavaScript">
+		
+        var text = "The nefarious thing about performance bugs is that the user may never know they are there - the program appears to work correctly, carrying out the correct operations, showing the right thing on the screen or printing the right text. It just does it a bit more slowly than it should have. It takes an experienced programmer, with a reasonably accurate mental model of the problem and the correct solution, to know how fast the operation should have been performed, and hence if the program is running slower than it should be.";
+        var count = 0;
+        var count2 = 0;
+        const textArea = document.getElementById("outDiv");
+        const textLength = text.length;
+
+        function printString(){
+            
+            if (count <= textLength) {
+                
+                if (count2 == 100){
+                    document.getElementById("outDiv").innerHTML +="<br>";
+                    count2 = 0;
+                }
+                const myNextChar = text.charAt(count); 
+                document.getElementById("outDiv").innerHTML += myNextChar;
+                setTimeout(() => {
+                    printString();
+                }, 10);
+
+
+                
+                count++;
+                count2++;
+            }
+            else{
+                return false;
+            }
+        }
+
+		</script>
+	</head>
+	<body>
+        <input type="button" id="btnPrint"  value="Print" onclick="printString();"/>
+        <div id = "outDiv"></div>
+	</body>
+</html>
